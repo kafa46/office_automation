@@ -16,20 +16,15 @@ Feb, 2023.
 '''
 
 from abc import ABC, abstractmethod
+from doc_factory.template_data import OfficialDocumentTemplate
+from datetime import datetime
 
 class DocumentFactory(ABC):
     '''문서 생성 추상 클래스'''
     
     @abstractmethod
-    def get_data(self, organization:str, data: dict) -> dict:
-        '''문서 생성에 필요한 기본 정보 생성
-        Return: dict
-            dict = {
-                'org': orgainztion,
-                'template_loc': str # 템플릿 파일 위치 + 파일명,
-                'doc_data': dict    # 파일을 채우기 위한 데이터 ,
-                    :        :        # (날짜, 일시 등 추가 가능),
-            }
+    def get_data(self, data: OfficialDocumentTemplate) -> OfficialDocumentTemplate:
+        '''문서 생성에 필요한 추가 정보 생성
         '''
     
     @abstractmethod
@@ -48,8 +43,11 @@ class DocumentFactory(ABC):
 class CMSCDocumentFactory(DocumentFactory):
     '''청원다문화지원센터(cmsc) 문서 생성'''
     
-    def get_data(self, organization:str, data: dict) -> dict:
-        return True
+    def get_data(self, data: OfficialDocumentTemplate) -> OfficialDocumentTemplate:
+        '''추가 정보 생성'''
+        data.member_date = datetime.now().strftime('%y.%m.%d')
+        
+        return data
 
     def read_doc(self, f_name: str) -> object:
         return True
@@ -63,7 +61,7 @@ class CMSCDocumentFactory(DocumentFactory):
 class PenielDocumentFactory(DocumentFactory):
     '''오송생명교회(peniel) 문서 생성'''
     
-    def get_data(self, organization:str, data: dict) -> dict:
+    def get_data(self, data: OfficialDocumentTemplate) -> OfficialDocumentTemplate:
         return True
     
     def read_doc(self, f_name: str) -> object:
@@ -89,11 +87,13 @@ def choose_factory(fatcory_type: str) -> DocumentFactory:
     return None
 
 
-def main(factory: DocumentFactory):
+def builder(factory: DocumentFactory, doc_info: OfficialDocumentTemplate) -> str:
     '''Main function.'''
     
-    doc_data = factory.get_data()
+    doc_data = factory.get_data(doc_info)
     tempalte_doc = factory.read_doc()
+
+    # return file path (saved location including file name)
 
 
 if __name__=='__main__':

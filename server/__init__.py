@@ -6,9 +6,12 @@
 '''
 
 from flask import Flask 
+import config
    
 def create_app():
     app = Flask(__name__)
+
+    app.config.from_object(config)
 
     # 블루프린트 등록
     from server.views import main_views

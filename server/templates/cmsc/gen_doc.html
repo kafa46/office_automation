@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}문서작성{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="mt-3 d-flex justify-content-center">
+        <h1>문서 작성</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <form action="{{ url_for('main.process_data') }}" method="post">
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="my-3 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary">저장</button>
+                    <a href="{{ url_for('main.gen_doc') }}" class="mx-1 btn btn-outline-primary">내용 초기화</a>
+                    <a href="#" class="btn btn-outline-primary">돌아가기</a>
+                </div>
+            </div>
+            <div class="mb-3 mx-1 row">
+                <label for="receiver" class="col-sm-1 col-form-label">수신</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" id="receiver" placeholder="수신 기관을 입력하세요." name="receiver" />
+                </div>
+            </div>
+            <div class="mb-3 mx-1 row">
+                <label for="referrer" class="col-sm-1 col-form-label">참조</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" id="referrer" placeholder="참조 부서를 입력하세요." name="referrer" />
+                </div>
+            </div>
+            <div class="mb-3 mx-1 row">
+                <label for="title" class="col-sm-1 col-form-label">제목</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" id="title" placeholder="문서 제목을 입력하세요." name="title" />
+                </div>
+            </div>
+            <div class="mb-3 mx-1 row">
+                <label for="contents" class="col-sm-1 col-form-label">문서내용</label>
+                <div class="col-sm-11">
+                    <textarea name="contents" id="contents" rows="10" class="form-control" 
+                    placeholder="문서 내용을 입력해 주세요&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 귀 기관의 무궁한 발전을 기원합니다.&#13;&#10;&#13;&#10;2. 청원다문화가족지원센터는 다문화가족의 가족관계 향상을 도모하는 사업들을 운영하고 있습니다.&#13;&#10;&#13;&#10;3. 법인 변경으로 인한 잔액확인증을 청주대학교 산학협력단에 제출합니다."
+                    ></textarea>
+                </div>
+            </div>
+            <div class="mb-3 mx-1 row">
+                <label for="attach" class="col-sm-1 col-form-label">붙임</label>
+                <div class="col-sm-11">
+                    <textarea name="attach" id="attach" rows="4" class="form-control" 
+                    placeholder="첨부(파일) 내용을 입력해 주세요.&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 잔액확인증 1부."
+                    ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary">저장</button>
+                    <a href="{{ url_for('main.gen_doc') }}" class="mx-1 btn btn-outline-primary">내용 초기화</a>
+                    <a href="#" class="btn btn-outline-primary">취소</a>
+                </div>
+            </div>
+
+            <!-- hidden contents -->
+            <input type="text" class="form-control" id="organization" name="organization" value="cmsc" hidden/>
+
+        </form>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+{% endblock %}
+
+</html>
