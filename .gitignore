@@ -2,3 +2,5 @@ venv/
 *.pyc
 .vscode
 secret/
+__pycache__
+doc_factory/output

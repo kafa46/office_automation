@@ -28,7 +28,7 @@
     {% if messages %}
     <ul class="flashes">
         {% for message in messages %}
-        <div class="message_flash" hidden>{{ message }}</div>
+        <div class="message_flash">메시지:{{ message }}끝</div>
         {% endfor %}
     </ul>
     {% endif %}
@@ -36,11 +36,15 @@
 
     {% block content %}
     {% endblock %}
+
 <script>
     $(function(){
-        let flash_msg = $('.message_flash').text();
+        var flash_msg = $('.message_flash').text();
         if (flash_msg != undefined){
-            alert(flash_msg)
+            if (typeof(flash_msg) == "string" && flash_msg != ""){
+                alert('플래시 메시지: ' + flash_msg);
+                console.log(typeof(flash_msg));
+            }
         }
     });
 </script>

@@ -25,35 +25,62 @@
             <div class="mb-3 mx-1 row">
                 <label for="receiver" class="col-sm-1 col-form-label">수신</label>
                 <div class="col-sm-11">
-                    <input type="text" class="form-control" id="receiver" placeholder="수신 기관을 입력하세요." name="receiver" />
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="receiver" 
+                        placeholder="수신 기관을 입력하세요." 
+                        name="receiver" 
+                        value="{{ form.receiver.data or '' }}"/>
                 </div>
             </div>
             <div class="mb-3 mx-1 row">
                 <label for="referrer" class="col-sm-1 col-form-label">참조</label>
                 <div class="col-sm-11">
-                    <input type="text" class="form-control" id="referrer" placeholder="참조 부서를 입력하세요." name="referrer" />
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="referrer" 
+                        placeholder="참조 부서를 입력하세요." 
+                        name="referrer" 
+                        value="{{ form.referrer.data or '' }}"
+                        />
                 </div>
             </div>
             <div class="mb-3 mx-1 row">
                 <label for="title" class="col-sm-1 col-form-label">제목</label>
                 <div class="col-sm-11">
-                    <input type="text" class="form-control" id="title" placeholder="문서 제목을 입력하세요." name="title" />
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="title" 
+                        placeholder="문서 제목을 입력하세요." 
+                        name="title" 
+                        value="{{ form.title.data or '' }}"/>
                 </div>
             </div>
             <div class="mb-3 mx-1 row">
                 <label for="contents" class="col-sm-1 col-form-label">문서내용</label>
                 <div class="col-sm-11">
-                    <textarea name="contents" id="contents" rows="10" class="form-control" 
-                    placeholder="문서 내용을 입력해 주세요&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 귀 기관의 무궁한 발전을 기원합니다.&#13;&#10;&#13;&#10;2. 청원다문화가족지원센터는 다문화가족의 가족관계 향상을 도모하는 사업들을 운영하고 있습니다.&#13;&#10;&#13;&#10;3. 법인 변경으로 인한 잔액확인증을 청주대학교 산학협력단에 제출합니다."
-                    ></textarea>
+                    <textarea 
+                        name="contents" 
+                        id="contents" 
+                        rows="10" 
+                        class="form-control" 
+                        placeholder="문서 내용을 입력해 주세요&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 귀 기관의 무궁한 발전을 기원합니다.&#13;&#10;&#13;&#10;2. 청원다문화가족지원센터는 다문화가족의 가족관계 향상을 도모하는 사업들을 운영하고 있습니다.&#13;&#10;&#13;&#10;3. 법인 변경으로 인한 잔액확인증을 청주대학교 산학협력단에 제출합니다."
+                        value="{{ form.contents.data or '' }}"></textarea>
                 </div>
             </div>
             <div class="mb-3 mx-1 row">
                 <label for="attach" class="col-sm-1 col-form-label">붙임</label>
                 <div class="col-sm-11">
-                    <textarea name="attach" id="attach" rows="4" class="form-control" 
-                    placeholder="첨부(파일) 내용을 입력해 주세요.&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 잔액확인증 1부."
-                    ></textarea>
+                    <textarea 
+                        name="attach" 
+                        id="attach" 
+                        rows="4" 
+                        class="form-control" 
+                        placeholder="첨부(파일) 내용을 입력해 주세요.&#13;&#10;&#13;&#10;[작성 예시]&#13;&#10;1. 잔액확인증 1부."
+                        value="{{ form.attach.data or '' }}">{{''}}</textarea>
                 </div>
             </div>
             <div class="row">
